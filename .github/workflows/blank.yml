@@ -22,10 +22,8 @@ jobs:
            server-username: GITHUB_ACTOR
            server-password: GITHUB_TOKEN
            overwrite-settings: true
-        - name: Validate Gradle wrapper
-          uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
-        - name: Build the weighpad app
-          run: cd ap_weighpad_lcs && chmod +x ./gradlew && ./gradlew build
+        - name: Build with Gradle
+          run: gradle wrapper --gradle-version=4.6 --distribution-type=all
         - name: Upload a Build Artifact
           uses: actions/upload-artifact@v2.2.4
           with:
